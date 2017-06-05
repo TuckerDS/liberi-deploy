@@ -15,18 +15,19 @@ const bcryptSalt = 10;
  */
 module.exports = {
 
-  // userController.list()
-  list: function(req, res) {
-    userModel.find(function(err, users) {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error when getting user.',
-          error: err
-        });
-      }
-      return res.json(users);
-    });
-  },
+  // TODO: for admin panel
+  // // userController.list()
+  // list: function(req, res) {
+  //   userModel.find(function(err, users) {
+  //     if (err) {
+  //       return res.status(500).json({
+  //         message: 'Error when getting user.',
+  //         error: err
+  //       });
+  //     }
+  //     return res.json(users);
+  //   });
+  // },
 
   // userController.show()
   show: function(req, res) {
@@ -49,31 +50,8 @@ module.exports = {
     });
   },
 
-  // userController.create()
-  create: function(req, res) {
-    var user = new userModel({
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-      role: req.body.role,
-      validated: req.body.validated,
-      description: req.body.description
-    });
-
-    user.save(function(err, user) {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error when creating user',
-          error: err
-        });
-      }
-      return res.status(201).json(user);
-    });
-  },
-
   // userController.update()
   update: function(req, res) {
-    console.log("Llega aqui")
     var id = req.params.id;
     userModel.findOne({
       _id: id

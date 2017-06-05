@@ -74,9 +74,6 @@ module.exports = {
 
   //eventController.create()
   create: (req, res) => {
-    console.log("EL JODIDO ID DE USUARIO: " + req.body.user_id);
-    console.log("LA JODIDA lng"+ req.body.longitude);
-    console.log("LA JODIDA lat"+ req.body.latitude);
     var event = new eventModel({
       userId: new ObjectId(req.body.user_id),
       title: req.body.title,
